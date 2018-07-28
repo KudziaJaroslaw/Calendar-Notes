@@ -1,0 +1,907 @@
+/*  ~~~~~~~~~~ GLOBAL ~~~~~~~~~~ */
+*{
+  padding: 0;
+  margin: 0;
+}
+body, html{
+  width: auto;
+  min-width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-x: hidden;
+
+}
+
+
+#wrapper{
+  width: auto;
+  min-width:100vw;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  font-family: Lato;
+  align-items: center;
+  flex-direction: column;
+  animation: 1s ease 0s 1 showContent;
+  background-color: rgb(37,37,37);
+
+
+}
+li, a{
+    cursor: pointer;
+}
+/* ________________________________________TEXT FORMAT____________________________________*/
+.big{
+  font-size: 3em;
+  font-weight: 900;
+}
+.thin{
+  font-size:1.5em;
+  font-weight: 100;
+}
+/* ________________________________________TEXTAREA FORMAT____________________________________*/
+textarea{
+  width: 100%;
+  min-height: 40px;
+  height: auto;
+  line-height: 40px;
+  font-size: 100%;
+  font-family: Lato;
+  border: 1px solid #BDBDBD;
+  margin-top: 10px;
+  padding-left: 1vw;
+  resize: none;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* ________________________________________ANIMATION____________________________________*/
+@keyframes showContent {
+  0%{
+    opacity: 0;
+  }
+  100%{
+  opacity: 1;
+  }
+}
+@keyframes slideDown {
+  0%{
+    height: 0px;
+  }
+  100%{
+    height: 100%;
+  }
+}
+@keyframes colorUp {
+  0%{
+    background-color: none;
+  }
+  100%{
+    background-color: white;
+  }
+}
+.showContent{
+  animation: 1s ease 0s 1 showContent;
+}
+/*  ~~~~~~~~~~ END GLOBAL ~~~~~~~~~~ */
+/* ________________________________________PAGE____________________________________*/
+#main-calendar{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+  min-height: 80vh;
+  margin: 5em 0 5em 0;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+  background-color: rgb(37,37,37);
+}
+.calendar-Panel{
+  margin-left: auto;
+  margin-right: auto;
+  width: 40vw;
+  height: auto;
+  min-height: 45vw;
+  padding-left: 1vw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  background-color: rgb(37,37,37);
+  z-index: 1;
+}
+.note-Page{
+  margin-left: auto;
+  margin-right: auto;
+  width:40vw;
+  min-height: 45vw;
+  height: auto;
+  background-color: rgb(37,37,37);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* ________________________________________NAVBAR____________________________________*/
+#navBar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100vw;
+  height: 60px;
+  background:  linear-gradient(to left, rgb(255,255,255), rgb(226,226,226));
+  z-index: 10;
+}
+.logo{
+  width: 10%;
+  height: 60%;
+
+  margin: 0 0 0 10vw;
+
+  font-size: 2.5em;
+  font-weight: 600;
+  font-family: "Open Sans";
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo a{
+  text-decoration: none;
+  color: #1B1B1B;
+}
+.navList {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.logout{
+  width: 20%;
+  height: 60%;
+
+  border-left: 1px solid rgb(37,37,37);
+  padding-left: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  font-size: 1.1em;
+  font-family: Lato;
+  font-weight: 600;
+}
+.logout a{
+  display: flex;
+  align-items: center;
+
+  color: rgb(37,37,37);
+  text-decoration: none;
+
+  transition: color .3s ease-in-out;
+}
+.logout a:hover{
+  color: #f0754e;
+}
+.navList ul{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: flex-end;
+}
+.navList li{
+  width: calc(80% / 4);
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  font-family: "Fira Sans";
+  font-weight: 500;
+  font-size: 1em;
+  color: rgb(142,142,142);
+  text-transform: uppercase;
+  letter-spacing: 0px;
+
+  transition: all .3s ease-in-out;
+}
+.navList li:before, .navList li:after{
+  content: "";
+  width:0;
+
+  bottom: 0;
+  margin: 10px auto 10px auto;
+  border: 1px solid black;
+
+  position: relative;
+  display: block;
+  visibility: hidden;
+
+  transition: all .3s ease-in-out;
+}
+.navList li:hover:before, .navList li:hover:after{
+  content: "";
+  width: 70%;
+
+  border-color: black;
+
+  visibility: visible;
+
+  transition: width .4s ease-in-out;
+}
+.navList li:hover{
+  color: #F0754E;
+  font-weight: 600;
+}
+
+/* ________________________________________Foother____________________________________*/
+foother{
+  width: 100%;
+  height: 60px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: rgb(255,255,255);
+  color: rgb(138,138,138);
+}
+#addNoteForm{
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  z-index: 50;
+  background-color: rgb(244,244,244);
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+}
+
+#addNoteForm form{
+  width: auto;
+  min-width: 320px;
+  max-width: 600px;
+  min-height: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255,255,255);
+  border-left: 10px solid #F0754E;
+  box-shadow: 0px 0px 15px rgb(195,195,195);
+}
+.formExit{
+  margin: 10px 30px 0 0;
+  align-self: flex-end;
+  cursor: pointer;
+  color: #F0754E;
+}
+form #sendQuery{
+  margin: 0 30px 10px 0;
+  width: 125px;
+  height: 50px;
+  font-size: 1.1em;
+  color: rgb(255,255,255);
+  background: #F0754E;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.label {
+  display: flex;
+  flex-direction: column-reverse;
+  box-sizing: border-box;
+  margin-bottom: 3em;
+  width: 90%;
+  font-family: Arial;
+  font-weight: 500;
+
+}
+.field_label-wrap{
+  color: rgb(131,131,131);
+  font-size: 1.2em;
+  pointer-events: none;
+  transition: all .5s ease-in-out;
+  margin: 0 0 5px 5px;
+  font-family: "Open Sans";
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.label_input{
+  width: 100%;
+  border: none;
+  background: rgb(255,255,255);
+  border-bottom: 1px solid rgb(131,131,131);
+  padding: 0 5px 10px 5px;
+  white-space: normal;
+  line-height: 1.25;
+}
+.label_input:focus{
+  border-bottom: 1px solid #F0754E;
+}
+.label_input::placeholder{
+  color: rgb(138,138,138);
+}
+
+.label_input:focus ~ .field_label-wrap{
+  color: rgb(240,117,78);
+}
+.label_input:focus + .label_input:before{
+  border-bottom: 3px solid blue;
+}
+.letter_count{
+  font-size: .8em;
+  color: rgb(131,131,131);
+  align-self: flex-end;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CALENDAR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* ________________________________________DATE-HIGLIGHT____________________________________*/
+#calendar-Highlight{
+  width: 40vw ;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+}
+#date-Highlight{
+  width: 100%;
+  height: 50%;
+  font-family: Lato;
+  color: #F0754E;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#date-Highlight .big, #date-Highlight .thin{
+  width: 60px;
+  margin: 0 1em 0 1em;
+}
+#date-Highlight-Subtitle .big{
+  font-size: 1.8em;
+  margin: 0 0.5em 0 0.5em;
+}
+#date-Highlight-Subtitle .thin{
+  font-size: 1.2em;
+}
+#date-Highlight-Subtitle{
+  width: 100%;
+  height: 50%;
+  font-family: Lato;
+  font-weight: 200;
+  font-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #C25D3D;
+}
+#mat-Left, #mat-Right{
+  margin: 0 25px 0 25px;
+}
+/* ________________________________________TABLE____________________________________*/
+.calendar{
+  height: 40vw;
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+
+table{
+    width: 40vw;
+  height: 40vw;
+  border-collapse: collapse;
+  background-color: rgb(245,206,105);
+}
+
+.calendar td{
+  width: calc(40vw / 7);
+  height: calc(40vw  / 7);
+  font-size: 120%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #040201;
+  vertical-align: middle;
+  text-align: center;
+  transition: all .3s ease-in-out;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+th{
+  width: calc((45vw - 150px) / 7);
+  height: calc((45vw - 150px)  / 7);
+  font-size: 120%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  background-color: white;
+  color: #F0754E;
+  vertical-align: middle;
+  text-align: center;
+
+
+}
+
+.no-Effects{         /*  empty cell  */
+  background-color: rgb(232,176,30);
+  opacity: 0;
+  cursor:text;
+  pointer-events: none;
+}
+
+.calendar td:hover{
+  background-color: rgb(255,216,113);
+}
+/* ________________________________________COLS____________________________________*/
+.col-Normal{          /*  normal day  */
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255,229,150);
+  border-radius: 100%;
+  position: relative;
+}
+                      /*  day with notes  */
+.col-NormalWithNotes{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(249,249,249);
+  border-radius: 100%;
+  position: relative;
+}
+                      /*  present day with notes  */
+.col-NormalWithNotes2{
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(249,249,249);
+  border-radius: 100%;
+  position: relative;
+}
+
+.col-Today{           /*  present day  */
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(249,194,73);
+  border-radius: 100%;
+}
+
+.col-Active{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255,216,113);
+  border-radius: 100%;
+  position: relative;
+}         /*  selected day  */
+
+.col-Selected{
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255,229,150);
+  border-radius: 100%;
+  position: relative;
+}
+
+.buttonvalue{
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+}
+
+.haveNotes{
+  width: calc(700px / 7);
+  height: calc(700px / 7);
+  background-color: rgb(226,184,71);
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~NOTE-PAGE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#note-Panel{
+  width: 100%;
+  height: 100%;
+  padding-right: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+#day-Extension{
+  width: 100%;
+  height: 10%;
+  background-color: white;
+  color:  #F0754E;
+  padding: 20px;
+  font-size: 1.25em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+}
+.notes-Workplace{
+  width: 100%;
+  height: 90%;
+  padding: 20px;
+  background-color: rgb(245,206,105);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+#noteJson{
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 2em;
+}
+.notesPHP{
+  visibility: hidden;
+}
+                                          /* SAME */
+.note-Event{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 50px;
+  height: auto;
+  font-size: 1.2em;
+  color: black;
+  font-weight: 300;
+  border-bottom: 1px solid rgba(98,98,98,.3);
+  transition: all .25s ease-in;
+  cursor: pointer;
+}
+.note-Less{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 50px;
+  height: auto;
+  font-size: 1.2em;
+  color: black;
+  font-weight: 300;
+  border-bottom: 1px solid rgba(98,98,98,.3);
+  transition: all .25s ease-in;
+  cursor: pointer;
+}
+                                          /* SAME */
+.noteContent{
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+  box-sizing:border-box;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.26s ease;
+  background-color: rgb(255,229,150);
+}
+.noteEventHeader{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  box-sizing:border-box;
+}
+.noteId{
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+.noteOptions{
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.add-Note{
+  display: flex;
+  justify-content: flex-end;
+}
+#addNote{
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 100%;
+  background: rgb(255,129,37);
+  color: white;
+  font-size: 1.1em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification{
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  left:0;
+  top:0;
+}
+.notification:before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  position: absolute;
+  background-color: rgba(85,162,45,.42);
+  left:0;
+  top:0;
+}
+
+.messageBox{
+  width: 400px;
+  height: 250px;
+  z-index: 100;
+  background-color: #FCFCFC;
+  border: 1px solid rgb(194,194,194);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(51,51,51);
+  font-size: 1.5em;
+}
+.successMessageBoxHeader{
+  width: 100%;
+  height: 50%;
+  background-color: rgb(154,226,129);
+  color: rgb(245,245,245);
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.successMessageBoxHeader > i{
+  font-size: 3em;
+}
+.successMessageBoxContent{
+  width: 100%;
+  height: 50%;
+  background-color: rgb(245,245,245);
+  color: rgb(84,84,84);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.successMessageBoxContent > p::first-line{
+  font-size: 1.5em;
+  font-weight: 600;
+  color: rgb(154,226,129);
+}
+/*
+@media screen and (min-width: 600px) and (max-width: 1000px){
+
+  #main-calendar{
+    width: 100%;
+    height: auto;
+    flex-direction: column-reverse;
+    justify-content: center;
+    overflow: auto;
+  }
+  .calendar-Panel{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    min-height: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background-color: rgb(37,37,37);
+    z-index: 1;
+  }
+  .note-Page{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    min-height: 500px;
+    height: auto;
+    background-color: rgb(37,37,37);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+  #calendar-Highlight{
+    width: 500px;
+  }
+
+  .calendar{
+    width: 500px;
+    height: 500px;
+  }
+
+  table{
+    width: 500px;
+    height: 500px;
+
+  }
+
+  .calendar td{
+    width: calc(500px / 7);
+    height: calc(500px / 7);
+    font-size: 110%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    color: #040201;
+    vertical-align: middle;
+    text-align: center;
+    transition: all .3s ease-in-out;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
+  th{
+    width: calc(500px / 7);
+    height: calc(500px / 7);
+    font-size: 120%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    background-color: white;
+    color: #F0754E;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+}
+@media screen and (min-width: 1001px) and (max-width: 1300px){
+  #calendar-Highlight{
+    width: 500px;
+  }
+
+  .calendar{
+    width: 500px;
+    height: 500px;
+  }
+
+  table{
+    width: 500px;
+    height: 500px;
+
+  }
+  .note-Page{
+    min-height: 500px;
+  }
+
+  .calendar td{
+    width: calc(500px / 7);
+    height: calc(500px / 7);
+    font-size: 100%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    color: #040201;
+    vertical-align: middle;
+    text-align: center;
+    transition: all .3s ease-in-out;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
+  th{
+    width: calc(500px / 7);
+    height: calc(500px / 7);
+    font-size: 120%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    background-color: white;
+    color: #F0754E;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+}
+@media screen and (min-width: 1301px) and (max-width: 1800px){
+  #calendar-Highlight{
+    width: 600px;
+  }
+
+  .calendar{
+    width: 600px;
+    height: 600px;
+  }
+
+  table{
+    width: 600px;
+    height: 600px;
+
+  }
+  .note-Page{
+    width: 90%;
+    min-height: 600px;
+    padding-right: 50px;
+    box-sizing: border-box;
+  }
+  .calendar td{
+    width: calc(600px / 7);
+    height: calc(600px / 7);
+    font-size: 110%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    color: #040201;
+    vertical-align: middle;
+    text-align: center;
+    transition: all .3s ease-in-out;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
+  th{
+    width: calc(600px / 7);
+    height: calc(600px / 7);
+    font-size: 120%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    background-color: white;
+    color: #F0754E;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+}
+*/
